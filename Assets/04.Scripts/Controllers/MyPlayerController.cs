@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class MyPlayerController : MonoBehaviour
 {
+
+    private Transform MyPlayerTransform;
+    [SerializeField] private float moveSpeed;
     void Awake()
     {
         // 가장 먼저 호출되는 함수
@@ -20,6 +23,7 @@ public class PlayerController : MonoBehaviour
         // 세번째로 호출되는 함수
         // Update 함수가 호출되기 전에 호출되는 함수
         // 코루틴으로 호출될 수 있는 함수
+        MyPlayerTransform = GetComponent<Transform>();
     }
     void Update()
     {
@@ -36,5 +40,8 @@ public class PlayerController : MonoBehaviour
     {
         //일정한 간격으로 호출되는 함수(가본값 : 0.02초)
         // 물리 엔진의 계산 주기와 일치
+        Vector3 Movedir = (Managers.Input.GetVInput() * Vector3.forward + Managers.Input.GetHInput() * Vector3.right);
+        
+        MyPlayerTransform.Translate(Movedir.normalized * moveSpeed * Time.deltaTime);
     }
 }

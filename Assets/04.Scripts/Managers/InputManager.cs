@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    private float hInput;
+    private float vInput;
+
+    public float GetHInput()
+    {
+        return this.hInput;
+    }
+    public float GetVInput()
+    {
+        return this.vInput;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -11,12 +22,9 @@ public class InputManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void OnUpdate()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-        
-        Debug.Log("h = " + h);
-        Debug.Log("v = " + v);
+        this.hInput = Input.GetAxis("Horizontal");
+        this.vInput = Input.GetAxis("Vertical");
     }
 }
