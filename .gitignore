@@ -544,3 +544,5 @@ sysinfo.txt
 # End of https://www.toptal.com/developers/gitignore/api/rider,unity,csharp
 
 # Customed
+/Assets/Data
+/Assets/Data.meta
